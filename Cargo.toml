@@ -25,6 +25,7 @@ subcraft-project = { path = "crates/project" }
 subcraft-export = { path = "crates/export" }
 subcraft-assets = { path = "crates/assets" }
 subcraft-sbsar = { path = "crates/sbsar" }
+subcraft-spp = { path = "crates/spp" }
 subcraft-render = { path = "crates/render" }
 subcraft-app = { path = "crates/app" }
 subcraft-ui = { path = "crates/ui" }

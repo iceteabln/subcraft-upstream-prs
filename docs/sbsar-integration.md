@@ -40,4 +40,16 @@ The host writes per-output `.tga` files plus `manifest.json`. SubCraft maps file
 3. `crates/app` (`sbsar` / `sbsar_fill`) — bake into a temp dir, then `import_texture_set` / fill-layer helpers
 4. `crates/ui` (`sbsar_materials`) — shelf toolbar + grid; `shelf.rs` only calls thin hooks
 
+## Painter Smart Materials / Masks (`.spsm` / `.spmsk`)
+
+No Painter assets are bundled. Import your own files, or point SubCraft at an installed Painter shelf:
+
+| Need | Typical location (Windows) |
+|------|----------------------------|
+| Starter smart materials | `C:\Program Files\Adobe\Adobe Substance 3D Painter\resources\starter_assets\smart-materials\` |
+| Starter smart masks | `…\starter_assets\smart-masks\` |
+| Procedural noises (Ratio Cells, …) | `…\starter_assets\procedurals\` (override with `SUBCRAFT_PAINTER_PROCEDURALS`) |
+
+Shelf → Smart Materials / Smart Masks → **Import…** or **Load Painter Starter…** when those folders exist. On apply, SubCraft re-decodes `.spsm`/`.spmsk` and bakes Painter noise `.sbsar` graphs when the SBSAR host (above) and procedurals folder are available; otherwise it falls back to Pattern approximations.
+
 See also [ADR 0007](adr/0007-fork-upstream-sbsar.md) for merge boundaries.

@@ -816,6 +816,14 @@ impl SubcraftApp {
                     ui.close();
                     crate::panels::layers::import_sbsar_to_library_dialog(&mut self.state, now);
                 }
+                if item(ui, icons::SPARKLE, "Import Smart Material (.spsm)…", "") {
+                    ui.close();
+                    crate::panels::layers::import_smart_material_dialog(&mut self.state, now);
+                }
+                if item(ui, icons::MASK, "Import Smart Mask (.spmsk)…", "") {
+                    ui.close();
+                    crate::panels::layers::import_smart_mask_dialog(&mut self.state, now);
+                }
             });
             ui.menu_button("View", |ui| {
                 ui.set_min_width(240.0);

@@ -43,8 +43,8 @@ impl UserAssetKind {
         match self {
             UserAssetKind::Alpha => &subcraft_image::IMAGE_EXTENSIONS,
             UserAssetKind::Environment => &["hdr", "exr", "png", "jpg", "jpeg"],
-            UserAssetKind::SmartMaterial => &["scsmart"],
-            UserAssetKind::SmartMask => &["scmask"],
+            UserAssetKind::SmartMaterial => &["scsmart", "spsm"],
+            UserAssetKind::SmartMask => &["scmask", "spmsk"],
             UserAssetKind::BrushPreset => &["scbrush"],
             UserAssetKind::Texture => &subcraft_image::IMAGE_EXTENSIONS,
             UserAssetKind::Sbsar => &["sbsar"],

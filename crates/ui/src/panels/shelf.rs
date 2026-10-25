@@ -363,10 +363,36 @@ pub fn show(state: &mut UiState, ui: &mut Ui) {
                 }
             }
             ShelfTab::SmartMasks => {
-                shelf_hint(ui, "Applies to the selected layer. Edges / Cavity need baked maps (Ctrl+B).");
+                if ui.button(format!("{}  Import Smart Mask (.spmsk)…", crate::icons::DOWNLOAD)).clicked() {
+                    crate::panels::layers::import_smart_mask_dialog(state, now);
+                }
+                if subcraft_app::library::painter_starter_smart_masks_dir().is_some()
+                    && ui.button(format!("{}  Load Painter Starter Masks", crate::icons::SPARKLE)).clicked()
+                {
+                    let dir = subcraft_app::library::painter_starter_smart_masks_dir().unwrap();
+                    let masks = subcraft_app::library::load_spmsk_directory(&dir);
+                    let n = masks.len();
+                    state.library.smart_masks.extend(masks);
+                    state.set_status(format!("Loaded {n} Painter starter smart masks"), now);
+                }
+                library_folder_button(ui, state, subcraft_app::assets::UserAssetKind::SmartMask);
+                shelf_hint(ui, "Applies to the selected layer. Edges / Cavity need baked maps (Ctrl+B). Import .spmsk from Painter or set SUBCRAFT_PAINTER_PROCEDURALS for noise bake.");
             }
             ShelfTab::SmartMaterials => {
-                shelf_hint(ui, "Wear and dirt follow baked curvature / AO (Ctrl+B).");
+                if ui.button(format!("{}  Import Smart Material (.spsm)…", crate::icons::DOWNLOAD)).clicked() {
+                    crate::panels::layers::import_smart_material_dialog(state, now);
+                }
+                if subcraft_app::library::painter_starter_smart_materials_dir().is_some()
+                    && ui.button(format!("{}  Load Painter Starter Smart Materials", crate::icons::SPARKLE)).clicked()
+                {
+                    let dir = subcraft_app::library::painter_starter_smart_materials_dir().unwrap();
+                    let mats = subcraft_app::library::load_spsm_directory(&dir);
+                    let n = mats.len();
+                    state.library.smart_materials.extend(mats);
+                    state.set_status(format!("Loaded {n} Painter starter smart materials"), now);
+                }
+                library_folder_button(ui, state, subcraft_app::assets::UserAssetKind::SmartMaterial);
+                shelf_hint(ui, "Wear and dirt follow baked curvature / AO (Ctrl+B). Import .spsm from Painter; noise fills bake via the SBSAR host when Painter procedurals are installed.");
             }
         }
     });
