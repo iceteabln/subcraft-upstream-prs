@@ -148,6 +148,13 @@ pub struct Session {
     pub sbsar_effects: HashMap<(LayerId, EffectId), crate::sbsar::SbsarLayerParams>,
 }
 
+impl Session {
+    /// Remember the path a project was loaded from (`.subcraft` or experimental `.spp`).
+    pub(crate) fn set_loaded_path(&mut self, path: PathBuf) {
+        self.project_path = Some(path);
+    }
+}
+
 /// Everything a project file holds, captured cheaply (shared tiles and resources) so it can be
 /// written on a background thread while editing continues.
 pub struct ProjectSnapshot {

@@ -52,4 +52,10 @@ No Painter assets are bundled. Import your own files, or point SubCraft at an in
 
 Shelf → Smart Materials / Smart Masks → **Import…** or **Load Painter Starter…** when those folders exist. On apply, SubCraft re-decodes `.spsm`/`.spmsk` and bakes Painter noise `.sbsar` graphs when the SBSAR host (above) and procedurals folder are available; otherwise it falls back to Pattern approximations.
 
+## Experimental: open a Painter `.spp`
+
+**File → Open Substance (.spp)…** (or pass a `.spp` path on the CLI) loads the embedded mesh on a background thread. Embedded `.sbsar` paths are copied into the Materials library when present. Layer-stack / texture-cache fidelity is still evolving — treat this as a starting point for bringing Painter scenes across, not a full 1:1 project converter.
+
+Optional env: `SUBCRAFT_SPP_SBSAR=1` to emphasize SBSAR extraction in the open log (`docs/assbin-module.md` covers Assbin mesh notes).
+
 See also [ADR 0007](adr/0007-fork-upstream-sbsar.md) for merge boundaries.

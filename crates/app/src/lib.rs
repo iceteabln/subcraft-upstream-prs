@@ -26,7 +26,10 @@ pub mod session;
 pub mod sbsar;
 mod sbsar_fill;
 pub mod painter_procedural;
+pub mod spp;
+pub mod spp_job;
 pub mod spp_convert;
+mod spp_session;
 pub mod thumbnails;
 pub mod layer_previews;
 pub mod updater;
@@ -45,6 +48,9 @@ pub use sbsar::{
     SbsarLayerParams, bake_sbsar, bake_sbsar_with_overrides, clamp_bake_size, ensure_preview_bake,
 };
 pub use spp_convert::{spp_effects_to_mask_effects, spp_node_to_layer};
+pub use spp::{SppFormatProbe, SppOpenResult, SppOpenSummary, max_texture_resolution};
+pub use spp_job::SppOpenJob;
+pub use subcraft_spp::{log_step as spp_log_step, open_log_path as spp_open_log_path};
 
 pub use subcraft_compositor::{Composite, composite_comps};
 pub use subcraft_assets as assets;

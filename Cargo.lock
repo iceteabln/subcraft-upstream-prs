@@ -3677,6 +3677,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "subcraft-assbin-host"
+version = "0.1.8"
+dependencies = [
+ "libloading",
+ "log",
+ "thiserror 2.0.21",
+]
+
+[[package]]
 name = "subcraft-assets"
 version = "0.1.8"
 dependencies = [
@@ -3800,6 +3809,7 @@ name = "subcraft-mesh"
 version = "0.1.8"
 dependencies = [
  "bytemuck",
+ "byteorder",
  "glam",
  "gltf",
  "log",
